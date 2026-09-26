@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07090d">
+  <title>AgentGuard — AI Development Trust Layer</title>
+  <meta name="description" content="AI changes code fast. AgentGuard controls what it can do.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">AG</div><div><div class="brand-name">AgentGuard</div><div class="brand-sub">AI development trust layer</div></div></div>
+      <nav class="nav" aria-label="Primary navigation">
+        <button class="nav-item active"><span>⌂</span>Overview</button>
+        <button class="nav-item"><span>◈</span>Agent tools <b>5</b></button>
+        <button class="nav-item"><span>!</span>Findings <b id="findingCount" class="alert">4</b></button>
+        <button class="nav-item"><span>↔</span>Changes <b>1</b></button>
+        <button class="nav-item"><span>✓</span>Policies</button>
+        <button class="nav-item"><span>▣</span>Evidence</button>
+      </nav>
+      <div class="side-footer"><span class="dot"></span> AgentGuard engine ready<div>Designed around IBM Bob 2.0 workflows</div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">IBM Bob 2.0 · developer security</div><h1>AI changes code fast. AgentGuard controls what it can do.</h1><p>Verify agent tools, detect capability drift, enforce policy, and hand the developer an evidence-backed decision.</p></div>
+        <div class="actions"><button id="scanBtn" class="btn secondary">↻ <span>Scan workspace</span></button><div class="avatar">AG</div></div>
+      </header>
+
+      <div class="content">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="pill"><span class="dot"></span> Bob 2.0-native workflow</div>
+            <h2>The trust layer between an AI agent and the tools it can reach.</h2>
+            <p>AgentGuard treats tool identity, permissions, resource scope and digests as security artifacts. Approve the exact capability set once; re-review when it changes.</p>
+            <div class="actions hero-actions"><button id="driftBtn" class="btn primary">Run live demo <span>→</span></button><button id="exportBtn" class="btn ghost">Export Change Passport</button></div>
+          </div>
+          <div class="hero-visual"><div class="ring r1"></div><div class="ring r2"></div><div class="shield">AG</div><small><span class="dot"></span> Discover · Diff · Decide</small></div>
+        </section>
+
+        <section class="metrics">
+          <article class="metric"><div class="metric-icon">◈</div><div><span>Agent tools</span><strong>42</strong><small>Across the demo workspace</small></div></article>
+          <article class="metric"><div class="metric-icon critical">!</div><div><span>Critical</span><strong id="criticalCount">1</strong><small>Blocked or remediation required</small></div></article>
+          <article class="metric"><div class="metric-icon high">△</div><div><span>Review</span><strong id="reviewCount">3</strong><small>Needs explicit approval</small></div></article>
+          <article class="metric"><div class="metric-icon good">✓</div><div><span>Integrity</span><strong>100%</strong><small>Approved manifests monitored</small></div></article>
+        </section>
+
+        <section class="flow-banner"><div><span class="kicker">Trust workflow</span><strong>Plan → Audit → Diff → Policy → Verify</strong></div><span>Primary decisions are deterministic. AI explains the evidence.</span></section>
+
+        <section class="workspace">
+          <article class="panel inventory">
+            <div class="panel-head"><div><span class="kicker">Live inventory</span><h3>Agent tools</h3></div><span class="chip">5 monitored</span></div>
+            <div id="toolList" class="tool-list"></div>
+          </article>
+
+          <article class="panel detail">
+            <div class="panel-head"><div><span class="kicker">Capability passport</span><h3 id="toolTitle">github.read_repo</h3></div><span id="statusPill" class="status-pill approved">APPROVED</span></div>
+            <div id="requestBox" class="request-box"><div><span>Developer request</span><b>Add a GitHub agent tool for repository analysis</b></div><em>Baseline approved</em></div>
+            <div class="passport" id="passport"></div>
+            <div class="cap-box"><span class="cap-title">Declared capabilities</span><div id="caps" class="caps"></div></div>
+            <div id="findingArea"></div>
+            <div class="detail-actions"><button id="actionBtn" class="btn secondary">Simulate capability drift</button><button id="explainBtn" class="btn ghost">Explain with AI</button></div>
+            <div id="explanation" class="explanation hidden"></div>
+          </article>
+        </section>
+
+        <section class="bottom">
+          <article class="panel"><div class="panel-head"><div><span class="kicker">Bob 2.0 mapping</span><h3>Why the IBM workflow matters</h3></div><span class="chip">Native assets included</span></div>
+            <div class="bob-steps">
+              <div class="bob-step"><span>01</span><div><b>Plan</b><p>Inspect repository and tool boundary before edits.</p></div></div>
+              <div class="bob-step"><span>02</span><div><b>Security Reviewer</b><p>Apply explicit least-privilege rules.</p></div></div>
+              <div class="bob-step"><span>03</span><div><b>Capability Diff</b><p>Compare the live definition with the approved passport.</p></div></div>
+              <div class="bob-step"><span>04</span><div><b>Verify / Rollback</b><p>Validate the change and preserve a reversible state.</p></div></div>
+            </div>
+          </article>
+
+          <article class="panel"><div class="panel-head"><div><span class="kicker">Change Passport</span><h3>Evidence, not a black box</h3></div><button id="exportBtn2" class="small-action">Export JSON</button></div>
+            <div class="evidence-grid" id="evidenceGrid"></div>
+          </article>
+        </section>
+
+        <section class="panel"><div class="panel-head"><div><span class="kicker">Control activity</span><h3>Trust decisions</h3></div><span class="chip">Demo workspace</span></div>
+          <div class="timeline">
+            <div><time>14:32</time><i class="green"></i><p><b>github.read_repo</b><span>baseline signed · read-only repository access</span></p><em class="ok">approved</em></div>
+            <div><time>14:18</time><i class="orange"></i><p><b>filesystem.read</b><span>review opened · credential-bearing resource scope</span></p><em class="warn">review</em></div>
+            <div><time>13:54</time><i class="red"></i><p><b>shell.execute</b><span>policy blocked · unrestricted shell execution</span></p><em class="bad">blocked</em></div>
+            <div><time>12:47</time><i class="green"></i><p><b>postgres.query</b><span>manifest recorded · reporting database only</span></p><em class="ok">approved</em></div>
+          </div>
+        </section>
+
+        <footer><b>AGENTGUARD</b><span>IBM Bob 2.0 hackathon build</span><span>Deterministic policy engine · optional IBM Granite explanation</span></footer>
+      </div>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

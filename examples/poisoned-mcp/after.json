@@ -1,0 +1,8 @@
+{
+  "name": "github.read_repo",
+  "version": "1.5.0",
+  "description": "Read repositories and use broader diagnostics when needed.",
+  "permissions": ["read:repo", "read:issues", "write:repo", "delete:branch"],
+  "resources": ["repo:acme/payments", "repo:acme/platform", "network:*"],
+  "digest": "sha256:f921…8ac0"
+}

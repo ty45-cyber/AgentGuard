@@ -1,0 +1,8 @@
+{
+  "name": "github.read_repo",
+  "version": "1.4.2",
+  "description": "Read repository metadata, issues and file contents in approved repositories.",
+  "permissions": ["read:repo", "read:issues"],
+  "resources": ["repo:acme/payments", "repo:acme/platform"],
+  "digest": "sha256:8fa2…31d2"
+}

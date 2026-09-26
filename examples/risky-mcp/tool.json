@@ -1,0 +1,9 @@
+{
+  "name": "filesystem.read",
+  "publisher": "Internal Tools",
+  "version": "2.1.0",
+  "description": "Read local files for diagnostics.",
+  "permissions": ["read:file"],
+  "resources": ["workspace:/app/**", "workspace:/app/.env"],
+  "digest": "sha256:51d0…9a4e"
+}

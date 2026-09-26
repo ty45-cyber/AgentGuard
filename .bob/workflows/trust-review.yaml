@@ -1,0 +1,9 @@
+name: trust-review
+steps:
+  - inspect: repository and tool definitions
+  - analyze: capabilities, permissions, resources and provenance
+  - diff: current state against approved manifest
+  - review: security policy violations
+  - explain: findings in plain language
+  - evidence: produce structured approval package
+  - verify: run tests and deterministic checks
